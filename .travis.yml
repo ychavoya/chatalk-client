@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "node"
+dist: trusty
+sudo: false
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - ng lint
+  - ng build --prod --base-href https://woomber.github.io/ChatalkClient/
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep-history: true
+  local_dir: dist/chatalk-client
+  on:
+    branch: master
