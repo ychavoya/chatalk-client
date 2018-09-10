@@ -1,0 +1,7 @@
+<input type="text" name="mensaje" class="form-control"
+    [(ngModel)]="mensaje" placeholder="Enviar mensaje..."
+    (keyup.enter)="enviarMensaje()">
+
+<pre>
+{{ _socket.mensajes | json }}
+</pre>
