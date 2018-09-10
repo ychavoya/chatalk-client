@@ -1,8 +1,33 @@
-<div class="jumbotron animated fadeIn">
-  <h1 class="display-3">Próximamente</h1>
-  <p class="lead">Este sitio está en construcción, vuelva más adelante</p>
-  <hr class="my-2">
-  <p class="lead">
-    <a class="btn btn-dark btn-lg" href="https://github.com/Woomber/ChatalkClient" role="button"><i class="fab fa-github"></i> Ver repositorio en Github</a>
-  </p>
+<h1 class="display-3 text-center animated fadeIn fast">Bienvenido a Chatalk</h1>
+<p class="lead text-center animated fadein">Para comenzar, seleccione una opción</p>
+
+<div class="alert alert-warning alert-dismissible fade show animated fadeIn" role="alert">
+  <h4 class="alert-heading">Sitio en construcción</h4>
+  <p>Estamos trabajando en el sitio. Por favor vuelva más adelante.
+  <hr>
+  <a class="alert-link" href="https://github.com/Woomber/ChatalkClient" role="button"><i class="fab fa-github"></i> Ver repositorio en Github</a>
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<div class="card-group animated fadeIn">
+  <div class="card text-dark border-dark mb-3">
+      <div class="card-body">
+        <h5 class="card-title">¡Hola, mundo!</h5>
+        <p class="card-text">Converse con personas nuevas, haga nuevos amigos. Las conversaciones no se guardarán.</p>
+      </div>
+      <div class="card-footer bg-white"><a class="btn btn-outline-dark btn-block" [routerLink]="['/chat']" role="button">Iniciar</a></div>
+    </div>
+  
+    <div class="card text-dark border-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Amigos y Grupos</h5>
+          <p class="card-text">Hable con las personas que ya conoce en una conversación uno a uno. Cree y participe en grupos de conversación con varias personas.</p>
+        </div>
+        <div class="card-footer bg-white"><a class="btn btn-outline-dark btn-block disabled" role="button">Próximamente</a></div>
+      </div>
+
 </div>

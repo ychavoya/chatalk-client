@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketService } from '../../services/socket.service';
-import { environment } from '../../../environments/environment';
 import { Mensaje } from '../../models/mensaje.model';
+import { Response } from '../../models/response.model';
 
 @Component({
   selector: 'app-chat',
@@ -12,12 +12,8 @@ export class ChatComponent implements OnInit {
 
   mensaje = '';
 
-  constructor(private _socket: SocketService) {
-
-    _socket.recibirMensaje.subscribe((mensaje: Mensaje) => {
-      console.log(mensaje);
-    });
-
+  constructor(public _socket: SocketService) {
+    _socket.getOwnId();
   }
 
   ngOnInit() {
@@ -32,9 +28,8 @@ export class ChatComponent implements OnInit {
     this._socket.enviarMensaje({
       usuario: '',
       mensaje: this.mensaje,
-    }).then((data) => {
+    }).then((res: Response) => {
       this.mensaje = '';
-      console.log(data);
     }).catch((err) => {
       alert(err.mensaje);
     });

@@ -13,6 +13,7 @@ export class SocketService {
   private socket: Socket;
 
   public mensajes: Mensaje[] = [];
+  public id: string;
 
   public recibirMensaje: EventEmitter<Mensaje> = new EventEmitter();
 
@@ -32,13 +33,25 @@ export class SocketService {
 
   public enviarMensaje(mensaje: Mensaje) {
     return new Promise((resolve, reject) => {
-      this.socket.emit('mensaje', mensaje, (data: Response) => {
-        if (data.status === 200) {
-          resolve(data);
+      this.socket.emit('mensaje', mensaje, (res: Response) => {
+        if (res.status === 200) {
+          this.mensajes.push(res.data);
+          resolve(res);
         } else {
-          reject(data);
+          reject(res);
         }
       });
+    });
+  }
+
+  public getOwnId() {
+    new Promise((resolve, reject) => {
+      this.socket.emit('getOwnId', null, (res: Response) => {
+        resolve(res.data);
+      });
+    }).then((data: string) => {
+      this.id = data;
+      return data;
     });
   }
 
