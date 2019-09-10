@@ -14,7 +14,7 @@ cache:
 
 script:
   - ng lint
-  - ng build --prod --base-href https://woomber.github.io/chatalk-client/
+  - ng build --prod --base-href https://chavoya.me/chatalk-client/
 
 deploy:
   provider: pages
